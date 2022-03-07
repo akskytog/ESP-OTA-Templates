@@ -1,0 +1,369 @@
+[
+    {
+        "id": "9573e677464a65bf",
+        "type": "tab",
+        "label": "OTA-logging-test",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e5ba89ce37299bbd",
+        "type": "inject",
+        "z": "9573e677464a65bf",
+        "name": "fw_info test inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"firmware_info\":{\"fw_type\":\"ESP32-Dev-Module-30pin-24\",\"fw_version\":\"1\",\"updateNeeded\":\"0\"}}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 240,
+        "wires": [
+            [
+                "f95263f1a5ef7a17",
+                "a9fc2ff858b7aeb0"
+            ]
+        ]
+    },
+    {
+        "id": "f95263f1a5ef7a17",
+        "type": "file",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "filename": "/data/test_file.txt",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 400,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d7c59e65f05c719f",
+        "type": "debug",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "34d6504eb8f73d01",
+        "type": "moment",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "topic": "",
+        "input": "payload",
+        "inputType": "msg",
+        "inTz": "Australia/Melbourne",
+        "adjAmount": 0,
+        "adjType": "hours",
+        "adjDir": "add",
+        "format": "YYYY/MM/DD HH:mm:ss",
+        "locale": "en-AU",
+        "output": "payload",
+        "outputType": "msg",
+        "outTz": "Australia/Melbourne",
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "d7c59e65f05c719f"
+            ]
+        ]
+    },
+    {
+        "id": "38e2e37d73e43ebb",
+        "type": "mqtt in",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "topic": "node/firmware/update/ESP32-24",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e3ec13d11a826735",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 190,
+        "y": 500,
+        "wires": [
+            [
+                "a260be6e8d5a60b4",
+                "70b2199dcd2f7940"
+            ]
+        ]
+    },
+    {
+        "id": "a260be6e8d5a60b4",
+        "type": "debug",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "a9fc2ff858b7aeb0",
+        "type": "mqtt out",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "topic": "node/firmware/update/ESP32-24",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e3ec13d11a826735",
+        "x": 450,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "90ad7a1a3363dc9c",
+        "type": "debug",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "772c57536cffca79",
+        "type": "mqtt in",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "topic": "outTopic",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e3ec13d11a826735",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 120,
+        "y": 700,
+        "wires": [
+            [
+                "90ad7a1a3363dc9c"
+            ]
+        ]
+    },
+    {
+        "id": "70b2199dcd2f7940",
+        "type": "json",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 410,
+        "y": 500,
+        "wires": [
+            [
+                "51eb5ff79dbd3530",
+                "353be448126e0f2f"
+            ]
+        ]
+    },
+    {
+        "id": "51eb5ff79dbd3530",
+        "type": "debug",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "c4a3265e9939b79f",
+        "type": "debug",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "353be448126e0f2f",
+        "type": "function",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "func": "var fw_type          = msg.payload.firmware_info.fw_type;\nvar fw_version       = msg.payload.firmware_info.fw_version;\nvar fw_update_needed = msg.payload.firmware_info.updateNeeded;\nif (fw_update_needed == \"1\") {\n    fw_update_needed = \"yes\";\n} else {\n    fw_update_needed = \"no\";\n}\nvar date_time = new Date();\n\nvar fw_info = \n    date_time\n     + \"  Firmware update for board: \" + fw_type\n     + \"  Update needed? \" + fw_update_needed \n     + \"  Firmware version: \" + fw_version;\n\nmsg.payload = fw_info;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 500,
+        "wires": [
+            [
+                "c4a3265e9939b79f",
+                "3605e549f9ee493c"
+            ]
+        ]
+    },
+    {
+        "id": "1bf25c340a5c96cb",
+        "type": "inject",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "34d6504eb8f73d01"
+            ]
+        ]
+    },
+    {
+        "id": "3605e549f9ee493c",
+        "type": "file",
+        "z": "9573e677464a65bf",
+        "name": "",
+        "filename": "/data/test_file.txt",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 820,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eecf2e84ae5ff8e6",
+        "type": "comment",
+        "z": "9573e677464a65bf",
+        "name": "Format timestamp test",
+        "info": "",
+        "x": 170,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ba3ceba12a252db6",
+        "type": "comment",
+        "z": "9573e677464a65bf",
+        "name": "Generate test fw update object",
+        "info": "",
+        "x": 190,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "1f69e3705968aafa",
+        "type": "comment",
+        "z": "9573e677464a65bf",
+        "name": "Get fw update info, format and write to file",
+        "info": "Write to \"test_file.txt\" in the NR data/ directory",
+        "x": 220,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a0fb2b6f280319b9",
+        "type": "comment",
+        "z": "9573e677464a65bf",
+        "name": "Output debugging info from sketch",
+        "info": "Write to \"test_file.txt\" in the NR data/ directory",
+        "x": 200,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "e3ec13d11a826735",
+        "type": "mqtt-broker",
+        "name": "RPi4 MQTT broker",
+        "broker": "192.168.1.72",
+        "port": "1883",
+        "clientid": "ESP32-24-Client",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": false,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
