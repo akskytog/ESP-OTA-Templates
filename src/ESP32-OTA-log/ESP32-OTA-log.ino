@@ -57,7 +57,7 @@ int check_for_firmware_update_flag = 0; // Flag to indicate whether MQTT subscri
 //          esp32FOTA esp32FOTA("<Type of Firmware for this device>", <this version>);
 #define FW_SKETCH_NAME "ESP32-OTA-log.ino"  //<<<<<<<<<<<<<<<<<<<<<<<<< not required for OTA, but for logging OTA updates
 #define FW_TYPE "ESP32-Dev-Module-30pin-24" //<<<<<<<<<<<<<<<<<<<<<<<<< set target device
-#define FW_VERSION 4                        //<<<<<<<<<<<<<<<<<<<<<<<<< define version number of this sketch
+#define FW_VERSION 5                        //<<<<<<<<<<<<<<<<<<<<<<<<< define version number of this sketch
 esp32FOTA my_esp32FOTA(FW_TYPE, FW_VERSION);
 //--------------------------------------------------------------------------------------
 // Version Log (update with each revision):
@@ -66,6 +66,7 @@ esp32FOTA my_esp32FOTA(FW_TYPE, FW_VERSION);
 // 2        - LED on for 50ms, off for 2000ms
 // 3        - LED on for 25ms, off for 5000ms
 // 4        - LED on for 25ms, off for 5000ms,  added FW_SKETCH_NAME to allow logging of the name of the sketch
+// 5        - LED on for 25ms, off for 2000ms
 //--------------------------------------------------------------------------------------
 
 /* 060 - Timer Interrupt variables */
@@ -84,7 +85,7 @@ JsonObject firmware_info = doc.createNestedObject("firmware_info");
 
 /* 080 - The delay set for the onboard LED Pin to indicate changes in FW version */
 int LED_TIME_ON = 25;    // milliseconds (update between versions)
-int LED_TIME_OFF = 5000; // milliseconds
+int LED_TIME_OFF = 2000; // milliseconds
 
 void IRAM_ATTR onTimer() // triggered each time an interrupt occurs
 {
