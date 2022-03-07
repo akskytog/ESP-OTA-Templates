@@ -55,8 +55,9 @@ int check_for_firmware_update_flag = 0; // Flag to indicate whether MQTT subscri
 /* 050 - Firmware version setup */
 // format:
 //          esp32FOTA esp32FOTA("<Type of Firmware for this device>", <this version>);
+#define FW_SKETCH_NAME "ESP32-OTA-log.ino"  //<<<<<<<<<<<<<<<<<<<<<<<<< not required for OTA, but for logging OTA updates
 #define FW_TYPE "ESP32-Dev-Module-30pin-24" //<<<<<<<<<<<<<<<<<<<<<<<<< set target device
-#define FW_VERSION 3                        //<<<<<<<<<<<<<<<<<<<<<<<<< define version number of this sketch
+#define FW_VERSION 4                        //<<<<<<<<<<<<<<<<<<<<<<<<< define version number of this sketch
 esp32FOTA my_esp32FOTA(FW_TYPE, FW_VERSION);
 //--------------------------------------------------------------------------------------
 // Version Log (update with each revision):
@@ -64,6 +65,7 @@ esp32FOTA my_esp32FOTA(FW_TYPE, FW_VERSION);
 // 1        - LED on for 100ms, off for 1000ms
 // 2        - LED on for 50ms, off for 2000ms
 // 3        - LED on for 25ms, off for 5000ms
+// 4        - LED on for 25ms, off for 5000ms,  added FW_SKETCH_NAME to allow logging of the name of the sketch
 //--------------------------------------------------------------------------------------
 
 /* 060 - Timer Interrupt variables */
@@ -122,7 +124,8 @@ void setup()
   Serial.begin(115200);
   pinMode(LED_BUILTIN, OUTPUT);
 
-  Serial.println(">> start ESP-OTA-log sketch");
+  Serial.print(">>>> start ");
+  Serial.println(FW_SKETCH_NAME);
 
   // Timer setup
   timer = timerBegin(0, 80, true); // start at zero, assume clock speed 80MHz.  Prescaler of 80 means one count every CPU cycle, count up = true
@@ -172,6 +175,7 @@ void loop()
     firmware_info["fw_version"] = my_FW_VERSION;
     String my_updatedNeeded = String(updatedNeeded);
     firmware_info["updateNeeded"] = my_updatedNeeded;
+    firmware_info["sketch_name"] = FW_SKETCH_NAME; 
 
     // print serialised data to Serial port (for debugging)
     serializeJson(doc, Serial);
