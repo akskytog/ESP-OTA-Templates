@@ -3,7 +3,7 @@
 ## Background
 When a sketch is updated, a new .bin file is created (in USER/Documents/MySoftwareProjects/ArduinoOutput/)   and
 the JSON file to indicate a new version and to point to the new executable .bin file is updated 
-(in USER/Documents/MySoftwareProjects/PROJECT-NAME/src/FOTA/) - usually names fota_fleet.json
+(in USER/Documents/MySoftwareProjects/PROJECT-NAME/src/FOTA/) - usually named fota_fleet.json
 
 Once updated or created, these exist on the machine running VSCode (usually a Windows Desktop computer).
 These need to be copied to the webserver running on the Raspberry Pi that is accessed by the ESP32 so that the new
