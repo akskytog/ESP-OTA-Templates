@@ -146,6 +146,15 @@ When webserver is powered off, the ESP32 HTTP get slows (until timeout)
 When webserver is powered on, the ESP32 starts running normally
 
 
+#### Fleet OTA
+Tested 8th Mar 2022
+
+Simplied URL version of fota-fleet.json works OK
+[FAIL] - Multible firmware types in the json file doesn't work (suspect bug)  
+      - perhaps issue with length of fw type name???
+         - failed with this "type":"ESP32-Dev-Module-30pin-23"  
+            - so try with "type":"ESP32-23"  - also failed
+
 
 
 
