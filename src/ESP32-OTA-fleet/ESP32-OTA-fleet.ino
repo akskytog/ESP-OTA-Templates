@@ -54,18 +54,19 @@ The compiler will replace references to these constants with the defined value a
 /* 4 - Firmware version setup */
 // format:
 //          esp32FOTA esp32FOTA("<Type of Firmware for this device>", <this version>);
-esp32FOTA my_esp32FOTA("ESP32-Dev-Module-30pin-23", 1);   
+//esp32FOTA my_esp32FOTA("ESP32-Dev-Module-30pin-23", 4);   
+esp32FOTA my_esp32FOTA("ESP32-23", 3);   
 //--------------------------------------------------------------------------------------
 // Version Log (update with each revision):
-// Version  - description
-// 1        - initial (LED blink duration 50ms, with 2000ms pause between blinks)
-// 2        - 
-// 3        -
+// Version - description
+// 1       - LED on for 20ms, off for 3000ms
+// 2       - LED on for 20ms, off for 1000ms
+// 3       - LED on for 20ms, off for 3000ms
 //--------------------------------------------------------------------------------------
 
 /* 5 - The delay set for the onboard LED Pin to indicate changes in FW version */
-int LED_TIME_ON = 50;    // milliseconds (update between versions)
-int LED_TIME_OFF = 2000;  // milliseconds 
+int LED_TIME_ON = 20;    // milliseconds (update between versions)
+int LED_TIME_OFF = 3000;  // milliseconds 
 
 void connectToWiFi()
 {
@@ -76,8 +77,6 @@ void connectToWiFi()
   Serial.println(mySSID);
 
   WiFi.mode(WIFI_STA);
-  //  WiFi.config(ip);                   // set static IP Addr
-  //  WiFi.config(ip, gateway, subnet, dns);
   WiFi.begin(mySSID, myPASSWORD);
 
   while (WiFi.status() != WL_CONNECTED)
@@ -122,7 +121,7 @@ void loop()
   bool updatedNeeded = my_esp32FOTA.execHTTPcheck();
   if (updatedNeeded)
   {
-    Serial.println("  OTA firmware update required");
+    Serial.println("  <<<<<<<<<<<<<<<<<<<<<<<<<<< OTA firmware update required >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     my_esp32FOTA.execOTA();
   }
   else
