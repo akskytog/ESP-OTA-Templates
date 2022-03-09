@@ -2,17 +2,22 @@
     {
         "type": "ESP32-Dev-Module-30pin-22",
         "version": 3,
-        "url": "http://192.168.1.72:8080/fota/ESP32-OTA-minimal.ino.bin"
+        "host": "192.168.1.72",
+        "port": 8080,
+        "bin": "/fota/ESP32-OTA-minimal.ino.bin"
     },
     {
         "type": "ESP32-Dev-Module-30pin-23",
-        "version": 1,
-        "url": "http://192.168.1.72:8080/fota/ESP32-OTA-fleet.ino.bin"
+        "version": 5,
+        "host": "192.168.1.72",
+        "port": 8080,
+        "bin": "/fota/ESP32-OTA-fleet.ino.bin"
     },
     {
         "type": "ESP32-Dev-Module-30pin-24",
         "version": 3,
-        "url": "http://192.168.1.72:8080/fota/ESP32-OTA-log.ino.bin"
-        
+        "host": "192.168.1.72",
+        "port": 8080,
+        "bin": "/fota/ESP32-OTA-log.ino.bin"
     }
 ]

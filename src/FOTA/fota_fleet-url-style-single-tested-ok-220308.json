@@ -1,0 +1,5 @@
+{
+    "type": "ESP32-Dev-Module-30pin-23",
+    "version": 4,
+    "url": "http://192.168.1.72:8080/fota/ESP32-OTA-fleet.ino.bin"
+}
