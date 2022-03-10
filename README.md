@@ -153,12 +153,20 @@ Simplied URL version of fota-fleet.json works OK
 [FAIL] - Multible firmware types in the json file doesn't work (suspect bug)  
       - perhaps issue with length of fw type name???
          - failed with this "type":"ESP32-Dev-Module-30pin-23"  
-            - so try with "type":"ESP32-23"  - also failed
+            - so try with "type":"ESP32-23"  - also failed  
+
+Investigated whether or not the ESP-IDF Logging Library (https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/log.html)  
+could be used, but it appears that I'd need to use the ESP-IDF instead of the Arduino IDE extension.  
+Briefly looked at the ESP-IDF, but it appears too complex.  
+[noted that the ESP-IDF does seem to be used for production 'real-world' IoT products - eg. https://www.youtube.com/watch?v=y4xfub_s7Zk&t=2969s]    
+
+As at 10th March 2022, abandon trying to use the feature **support multiple firmware types in a single manifest**  
 
 
 
 
-## Alternatives
+
+## Alternatives Considered
 In addition to esp32FOTA, other OTA solutions considered were:
 - AsyncElegantOTA
   - Refer https://randomnerdtutorials.com/esp32-ota-over-the-air-arduino/
