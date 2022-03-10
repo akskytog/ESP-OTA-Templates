@@ -55,7 +55,7 @@ The compiler will replace references to these constants with the defined value a
 // format:
 //          esp32FOTA esp32FOTA("<Type of Firmware for this device>", <this version>);
 //esp32FOTA my_esp32FOTA("ESP32-Dev-Module-30pin-23", 4);   
-esp32FOTA my_esp32FOTA("ESP32-23", 3);   
+esp32FOTA my_esp32FOTA("ESP32-Dev-Module-30pin-23", 1);   
 //--------------------------------------------------------------------------------------
 // Version Log (update with each revision):
 // Version - description
